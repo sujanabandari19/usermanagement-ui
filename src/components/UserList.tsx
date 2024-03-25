@@ -51,44 +51,56 @@ function UserList() {
   );
 
   return (
-    <div>
-      <label htmlFor="searchInput">Search:</label>
-      <input
-        type="text"
-        placeholder="Search by First Name, Last Name, or Phone Number"
-        onChange={handleSearch}
-        size={50}
-      />
-       <Link to="/create"><FontAwesomeIcon icon={faPlus} /></Link>
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers.map(user => (
-            <tr key={user.id}>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.phoneNumber}</td>
-              <td>{user.email}</td>
-              <td>
-                <Link to={`/edit/${user.id}`}>
-                  <FontAwesomeIcon icon={faEdit} />
-                </Link>
-                <DeleteUser userId={user.id} onDelete={handleDelete} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-     
+    <div className="container">
+    <div className="row">
+      <div className="col-md-6">
+        <label htmlFor="searchInput" className="mr-2">Search:</label>
+        <input
+          type="text"
+          id="searchInput"
+          className="form-control mr-2"
+          placeholder="Search by First Name, Last Name, or Phone Number"
+          onChange={handleSearch}
+          size={50}
+        />
+        <Link to="/create" className="btn btn-primary">
+          <FontAwesomeIcon icon={faPlus} />
+        </Link>
+      </div>
     </div>
+    <div className="row mt-3">
+      <div className="col-md-12">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredUsers.map(user => (
+              <tr key={user.id}>
+                <td>{user.firstName}</td>
+                <td>{user.lastName}</td>
+                <td>{user.phoneNumber}</td>
+                <td>{user.email}</td>
+                <td>
+                  <Link to={`/edit/${user.id}`} className="btn btn-sm btn-primary mr-2">
+                    <FontAwesomeIcon icon={faEdit} />
+                  </Link>
+                  <DeleteUser userId={user.id} onDelete={handleDelete} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
   );
 }
 

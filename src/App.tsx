@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import UserList from './components/UserList';
 import CreateUser from './components/CreateUser';
 import EditUser from './components/EditUser';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
